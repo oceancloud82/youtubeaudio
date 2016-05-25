@@ -78,8 +78,7 @@ def start_conversion(url, audio_filename, video):
     output_filepath = os.path.join(settings.MEDIA_ROOT, audio_filename)
 
     result = subprocess.check_call([
-        'python',
-        '-m', 'youtube_dl',
+        'youtube-dl',
         '--no-playlist',
         '--extract-audio',
         '--audio-format', 'mp3',
