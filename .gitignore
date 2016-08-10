@@ -59,3 +59,6 @@ target/
 
 # PyCharm IDE
 .idea
+
+# Ansible
+*.retry
