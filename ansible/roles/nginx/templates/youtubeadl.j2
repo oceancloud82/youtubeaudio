@@ -52,7 +52,7 @@ server {
         proxy_set_header X-Forwarded-Proto https;
         proxy_set_header Host $http_host;
         proxy_redirect off;
-        proxy_read_timeout 120;
+        proxy_read_timeout 300;
 
         # Try to serve static files from nginx, no point in making an
         # *application* server like Unicorn/Rainbows! serve static files.
