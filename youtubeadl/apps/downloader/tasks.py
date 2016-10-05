@@ -27,7 +27,8 @@ def convert(url, client_ip=None):
     info = get_video_info(url)
 
     result = None
-    if info and info['duration'] <= settings.MAX_DURATION_SECONDS:
+    duration = info.get('duration')
+    if info and duration and duration <= settings.MAX_DURATION_SECONDS:
         youtube_id = info['id']
         title = info['title']
 
@@ -36,7 +37,7 @@ def convert(url, client_ip=None):
         video, created = Video.objects.get_or_create(youtube_id=youtube_id)
         video.url = url
         video.title = title
-        video.duration = int(info['duration'])
+        video.duration = duration
         video.save()
 
         ActivityLog.objects.create(

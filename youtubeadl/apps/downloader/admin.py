@@ -18,7 +18,14 @@ class ActivityLogAdmin(admin.ModelAdmin):
         'action',
         'created',
     )
-    list_filter = ('action', 'client_ip')
+    list_filter = (
+        'action',
+        'created',
+    )
+    search_fields = (
+        'video_title',
+        'client_ip',
+    )
 
     def video_title(self, obj):
         return Truncator(obj.video.title).chars(50)
@@ -34,8 +41,12 @@ class VideoAdmin(admin.ModelAdmin):
         'duration',
         'download_count',
         'last_download_date',
+        'created',
     )
-    list_filter = ('last_download_date',)
+    list_filter = (
+        'last_download_date',
+        'created',
+    )
     search_fields = (
         'youtube_id',
         'title',

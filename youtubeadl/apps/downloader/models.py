@@ -7,7 +7,7 @@ from django_extensions.db.models import TimeStampedModel
 
 class Video(TimeStampedModel):
     youtube_id = models.CharField(max_length=100, unique=True)
-    url = models.URLField(max_length=255)
+    url = models.URLField(max_length=512)
     title = models.TextField()
     duration = models.IntegerField(null=True)
     audio_filename = models.CharField(max_length=255, null=True, blank=True)
