@@ -24,10 +24,13 @@ def convert(url, client_ip=None):
            MAX_DURATION_SECONDS, log the request and start the conversion.
         3. Return the download link if conversion completes successfully.
     """
-    info = get_video_info(url)
-
     result = None
-    duration = info.get('duration')
+    duration = None
+
+    info = get_video_info(url)
+    if info:
+        duration = info.get('duration')
+        
     if info and duration and duration <= settings.MAX_DURATION_SECONDS:
         youtube_id = info['id']
         title = info['title']
