@@ -7,9 +7,9 @@
         job=". /webapps/youtubeadl/bin/activate && pip install -U youtube-dl && supervisorctl restart all"
         state=present
 
-- name: Ensure that a daily file cleanup job exists
-  cron: name="daily file cleanup"
-        special_time=daily
+- name: Ensure that an hourly file cleanup job exists
+  cron: name="hourly file cleanup"
+        special_time=hourly
         user=root
-        job="cd /webapps/youtubeadl/media && rm -rf *.mp3 *.mp4 *.m4a *.webm"
+        job="find /webapps/youtubeadl/media -type f -cmin +120 -delete"
         state=present

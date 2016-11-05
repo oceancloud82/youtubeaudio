@@ -30,7 +30,7 @@ def convert(url, client_ip=None):
     info = get_video_info(url)
     if info:
         duration = info.get('duration')
-        
+
     if info and duration and duration <= settings.MAX_DURATION_SECONDS:
         youtube_id = info['id']
         title = info['title']
