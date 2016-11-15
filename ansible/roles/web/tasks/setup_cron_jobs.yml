@@ -11,5 +11,5 @@
   cron: name="hourly file cleanup"
         special_time=hourly
         user=root
-        job="find /webapps/youtubeadl/media -type f -cmin +120 -delete"
+        job="find /webapps/youtubeadl/media -type f -cmin +180 -delete"
         state=present
