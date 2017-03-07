@@ -16,6 +16,7 @@ def slugify(text, delim=u'-'):
     re_obj = re.compile(r'[\t !"#$%&\'()*\-/<=>?@\[\\\]^_`{|},.:]+')
     for word in re_obj.split(text):
         word = normalize('NFKD', word).encode('ascii', 'ignore')
+        word = word.replace('/', '')
         if word:
             result.append(word)
     return unicode(delim.join(result))
