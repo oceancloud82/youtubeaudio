@@ -76,8 +76,10 @@ class DownloadFormView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(DownloadFormView, self).get_context_data()
-        context['ad_top'] = Ad.objects.filter(position=Ad.TOP).first()
-        context['ad_bottom'] = Ad.objects.filter(position=Ad.BOTTOM).first()
+        context['ad_top'] = Ad.objects.filter(position=Ad.TOP)\
+            .order_by('?').first()
+        context['ad_bottom'] = Ad.objects.filter(position=Ad.BOTTOM)\
+            .order_by('?').first()
 
         return context
 
