@@ -2,7 +2,13 @@ import datetime
 import logging
 import os
 import urllib
-from urlparse import urlparse, parse_qs, urlsplit, urlunsplit
+
+try:
+    # If using Python 3.
+    from urllib.parse import urlparse, parse_qs, urlsplit, urlunsplit
+except ImportError:
+    # If using Python 2.
+    from urlparse import urlparse, parse_qs, urlsplit, urlunsplit
 
 from django.conf import settings
 from django.core.urlresolvers import reverse
