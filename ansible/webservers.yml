@@ -16,6 +16,6 @@
     - base
     - certbot
     - rabbitmq
-    - { role: web, enable_deadsnakes_ppa: yes, virtualenv_python_version: python3.6 }
+    - web
     - celery
     - nginx

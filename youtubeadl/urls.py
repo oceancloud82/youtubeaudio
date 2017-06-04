@@ -7,6 +7,7 @@ from youtubeadl.apps.downloader.views import DownloadFormView
 admin.site.site_header = 'YouTube ADL Admin'
 admin.site.site_title = 'YouTube ADL Admin'
 
+
 urlpatterns = [
     url(r'^$', DownloadFormView.as_view(), name='home'),
     url(r'^downloader/', include('youtubeadl.apps.downloader.urls')),
