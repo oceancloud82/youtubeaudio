@@ -11,8 +11,5 @@ urlpatterns = [
     url(r'^$', DownloadFormView.as_view(), name='home'),
     url(r'^downloader/', include('youtubeadl.apps.downloader.urls')),
 
-    # Grappelli needs to be defined before the admin.
-    url(r'^grappelli/', include('grappelli.urls')),
-
     url(r'^admin/', include(admin.site.urls)),
 ]

@@ -12,7 +12,7 @@ def create_filename(value):
     Non-ASCII characters will be deleted from the value and replace spaces with
     underscores. Slashes and percent signs are also stripped.
     """
-    filename = slugify(value, u'_')
+    filename = slugify(value, '_')
 
     # Generate a random filename if the title only contains non-ASCII
     # characters (i.e. slugifying it deletes everything).

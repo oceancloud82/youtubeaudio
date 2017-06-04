@@ -13,7 +13,7 @@ from youtubeadl.apps.downloader.models import Video, ActivityLog
 from youtubeadl.apps.downloader.utils import create_filename, get_video_info
 
 
-@shared_task
+@shared_task(time_limit=900)
 def convert(url, client_ip=None):
     """
     Convert the YouTube video to MP3 audio.

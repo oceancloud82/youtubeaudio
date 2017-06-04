@@ -18,5 +18,5 @@ class Ad(TimeStampedModel):
                                 blank=True,
                                 choices=POSITION_CHOICES)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.description

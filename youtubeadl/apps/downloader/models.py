@@ -15,7 +15,7 @@ class Video(TimeStampedModel):
     download_count = models.IntegerField(null=True, default=0)
     last_download_date = models.DateTimeField(null=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.youtube_id
 
 

@@ -2,7 +2,7 @@ import re
 from unicodedata import normalize
 
 
-def slugify(text, delim=u'-'):
+def slugify(text, delim='-'):
     """
     Slugifies a string.
 
@@ -15,11 +15,12 @@ def slugify(text, delim=u'-'):
 
     re_obj = re.compile(r'[\t !"#$%&\'()*\-/<=>?@\[\\\]^_`{|},.:]+')
     for word in re_obj.split(text):
-        word = normalize('NFKD', word).encode('ascii', 'ignore')
+        word = normalize('NFKD', word).encode('ascii', 'ignore').decode('utf-8')
         word = word.replace('/', '')
         if word:
             result.append(word)
-    return unicode(delim.join(result))
+
+    return delim.join(result)
 
 
 def get_client_ip(request):

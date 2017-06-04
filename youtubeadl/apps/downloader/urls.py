@@ -1,9 +1,9 @@
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 
 from youtubeadl.apps.downloader import views
 
 
-urlpatterns = patterns('',
+urlpatterns = [
     url(
         regex=r'^convert/$',
         view=views.ConvertAjaxView.as_view(),
@@ -14,4 +14,4 @@ urlpatterns = patterns('',
         view=views.download,
         name='download_view',
     ),
-)
+]

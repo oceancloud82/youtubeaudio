@@ -1,14 +1,9 @@
 import datetime
 import logging
 import os
+import time
 import urllib
-
-try:
-    # If using Python 3.
-    from urllib.parse import urlparse, parse_qs, urlsplit, urlunsplit
-except ImportError:
-    # If using Python 2.
-    from urlparse import urlparse, parse_qs, urlsplit, urlunsplit
+from urllib.parse import urlparse, parse_qs, urlsplit, urlunsplit
 
 from django.conf import settings
 from django.core.urlresolvers import reverse
@@ -20,8 +15,8 @@ from braces.views import JSONResponseMixin, AjaxResponseMixin
 from celery.result import AsyncResult
 
 from youtubeadl.apps.core.utils import get_client_ip
-
 from youtubeadl.apps.core.models import Ad
+
 from youtubeadl.apps.downloader import tasks
 from youtubeadl.apps.downloader.models import ActivityLog, Video
 
@@ -111,7 +106,10 @@ class ConvertAjaxView(JSONResponseMixin, AjaxResponseMixin, View):
             # TODO: We're tying up resources here as we're waiting for the task
             # to finish. Remove this later and have the AJAX request retry
             # until result.ready().
-            result.wait()
+            is_ready = False
+            while not is_ready:
+                is_ready = result.ready()
+                time.sleep(1)
 
             data = {
                 'task_id': task.id,

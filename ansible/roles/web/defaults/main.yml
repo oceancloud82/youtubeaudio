@@ -1,0 +1,4 @@
+---
+
+enable_deadsnakes_ppa: no
+virtualenv_python_version: "{{ base_python_package }}"

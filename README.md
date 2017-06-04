@@ -9,8 +9,8 @@ A Django web application for extracting the audio from a YouTube video and conve
 Technology Stack
 ----------------
 
-- Python 2.7
-- Django 1.8
+- Python 3.6
+- Django 1.11
 - Twitter Bootstrap 3
 - PostgreSQL
 - Nginx
@@ -39,7 +39,7 @@ http://docs.docker.com/compose/install/
 In the project root (where the `docker-compose.yml` file is located), run:
 
 ```
-docker-compose run django pip install -r requirements.txt
+docker-compose run django python3.6 -m pip install -r requirements.txt
 ```
 
 To run any command inside the Django Docker container, simply prepend `docker-compose run django`.
@@ -55,7 +55,7 @@ This will start the containers in the background.
 ### Run the Django database migrations
 
 ```
-docker-compose run django python manage.py migrate
+docker-compose run django python3.6 manage.py migrate
 ```
 
 ### View the logs
