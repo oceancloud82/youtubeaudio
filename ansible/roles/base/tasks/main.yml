@@ -11,11 +11,6 @@
   tags: packages
         packages.security
 
-- name: Upgrade pip
-  pip: name=pip state=latest
-  tags: packages
-        skip_ansible_lint
-
 - name: Install base packages
   apt: name={{ item }} update_cache={{ update_apt_cache }} force=yes state=installed
   with_items:
@@ -28,3 +23,6 @@
     - supervisor
   tags: packages
 
+- name: Upgrade pip
+  pip: name=pip state=latest
+  tags: packages

@@ -54,12 +54,7 @@ server {
         proxy_redirect off;
         proxy_read_timeout 300;
 
-        # Try to serve static files from nginx, no point in making an
-        # *application* server like Unicorn/Rainbows! serve static files.
-        if (!-f $request_filename) {
-            proxy_pass http://{{ application_name }}_wsgi_server;
-            break;
-        }
+        proxy_pass http://{{ application_name }}_wsgi_server;
     }
 
     # Error pages

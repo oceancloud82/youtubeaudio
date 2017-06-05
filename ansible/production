@@ -2,7 +2,7 @@
 env=production
 
 [webservers]
-www.youtubeadl.com nginx_use_letsencrypt=true
+www.youtubeadl.com
 
 [dbservers]
 www.youtubeadl.com

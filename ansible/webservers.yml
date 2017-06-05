@@ -6,15 +6,15 @@
   become_user: root
   remote_user: root
   vars:
-    - setup_git_repo: yes
-    - update_apt_cache: yes
+    setup_git_repo: yes
+    update_apt_cache: yes
   vars_files:
     - env_vars/base.yml
     - env_vars/{{ env }}.yml
 
   roles:
     - base
-    - certbot
+#    - certbot
     - rabbitmq
     - web
     - celery
