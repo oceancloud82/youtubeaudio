@@ -2,8 +2,7 @@ import datetime
 import logging
 import os
 import time
-import urllib
-from urllib.parse import urlparse, parse_qs, urlsplit, urlunsplit
+from urllib.parse import urlparse, parse_qs, urlsplit, urlunsplit, urlencode
 
 from django.conf import settings
 from django.core.urlresolvers import reverse
@@ -165,7 +164,7 @@ class ConvertAjaxView(JSONResponseMixin, AjaxResponseMixin, View):
                 parts.scheme,
                 parts.netloc,
                 parts.path,
-                urllib.urlencode(qs, True),
+                urlencode(qs, True),
                 parts.fragment
             ])
 
