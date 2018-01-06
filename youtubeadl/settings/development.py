@@ -1,5 +1,5 @@
 from youtubeadl.settings.base import *
-
+import debug_toolbar
 
 INSTALLED_APPS += ('debug_toolbar',)
 
