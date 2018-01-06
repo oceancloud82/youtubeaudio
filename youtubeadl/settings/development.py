@@ -1,18 +1,16 @@
 from youtubeadl.settings.base import *
-import debug_toolbar
 
-INSTALLED_APPS += ('debug_toolbar',)
 
-MIDDLEWARE_CLASSES += ('debug_toolbar.middleware.DebugToolbarMiddleware', )
+DEBUG = True
 
-# The Django Debug Toolbar will only be shown to these client IPs.
-INTERNAL_IPS = (
-    '127.0.0.1',
-    '192.168.33.1',
-)
+ALLOWED_HOSTS = ['*']
 
-DEBUG_TOOLBAR_CONFIG = {
-    'INTERCEPT_REDIRECTS': False,
-    'SHOW_TEMPLATE_CONTEXT': True,
-    'HIDE_DJANGO_SQL': False,
-}
+
+# Use the cached template loader so template is compiled once and read from
+# memory instead of reading from disk on each load.
+TEMPLATES[0]['OPTIONS']['loaders'] = [
+    ('django.template.loaders.cached.Loader', [
+        'django.template.loaders.filesystem.Loader',
+        'django.template.loaders.app_directories.Loader',
+    ]),
+]
