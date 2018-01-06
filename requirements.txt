@@ -1,10 +1,11 @@
-Django==1.11.2
+# Make sure pip is using a newer version.
+pip>=9.0.1
 
-django-braces==1.11.0
-django-compressor==2.1
-django-extensions==1.7.9
-celery==3.1.24
-flower==0.9.1
-gunicorn==19.7.1
-psycopg2==2.7.3.2
-youtube-dl>=2014.06.26
+# Local development tools.
+django-debug-toolbar>=1.8
+ipdb>=0.10.3
+ipython[notebook]>=3.2.1
+Werkzeug>=0.10.4
+
+# Include the requirements.txt requirements file
+-r requirements.txt.dev
